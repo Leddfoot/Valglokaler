@@ -1,18 +1,27 @@
-import { getFylke, getKommuner } from './requests.js'
-import { generateOptionList, generateKommuneList } from './views.js'
+import { generateFylkeOptionList, generateKommuneList } from './views.js'
+import { getDataset, makeKommuneUrl } from './requests.js'
 
-getFylke().then((fylke) => {
-  fylke.forEach(element => {
-    console.log(element)
+let url = `http://hotell.difi.no/api/json/difi/geo/fylke`
 
-    generateOptionList(element.navn, element.nummer)
-  })
+getDataset(url).then((fylke) => {
+    fylke.forEach(element => {
+        // console.log(element.nummer);
+        
+        generateFylkeOptionList(element.navn, element.nummer)
+    })
 }).catch((err) => {
-  console.log(`Error: ${err}`)
+    console.log(`Error: ${err}`)
 })
 
+const clearKommuneOptions = () => {
+    const kommuneOptions = document.getElementById('kommune-list')
+    kommuneOptions.options.length = 0
+}
+
 document.querySelector('#fylke-list').addEventListener('change', (e) => {
-//   console.log(e.target.value)
-  const fylkeNumber = e.target.value
-  generateKommuneList(fylkeNumber)
+    // console.log(e.target.value)
+    const fylkeNumber = e.target.value
+    clearKommuneOptions()
+    makeKommuneUrl(fylkeNumber) 
+
 })

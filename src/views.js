@@ -1,6 +1,6 @@
 import { getKommuner } from './requests.js'
 // Generate fylke list for dropdown
-const generateOptionList = (fylkeName, fylkeNumber) => {
+const generateFylkeOptionList = (fylkeName, fylkeNumber) => {
   if (fylkeName === 'Kontinentalsokkelen' || fylkeName === 'Uoppgitt') {
     return
   }
@@ -11,18 +11,17 @@ const generateOptionList = (fylkeName, fylkeNumber) => {
 
   const fylkeDropdown = document.getElementById('fylke-list')
   fylkeDropdown.appendChild(fylkeOptionElement)
-
-  console.log(`your county is ${fylkeName}. The county number is ${fylkeNumber}`)
 }
 
-// const generateKommuneList = (fylkeNumber) => {
-//     getKommuner(fylkeNumber).then((kommuner) => {
-//         kommuner.forEach(element => {
 
-//         })
-//     }).catch((err) => {
-//         console.log(`Error: ${err}`)
-//     })
-// }
 
-export { generateOptionList, generateKommuneList }
+const generateKommuneOptionList = (kommune) => {
+  const kommuneDropdown = document.getElementById('kommune-list')  
+  const kommuneOptionElement = document.createElement('option')  
+  kommuneOptionElement.textContent = kommune
+  //Do I need a value below?
+  kommuneOptionElement.value = kommune  
+  kommuneDropdown.appendChild(kommuneOptionElement)  
+}
+
+export { generateFylkeOptionList, generateKommuneOptionList }

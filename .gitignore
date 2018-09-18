@@ -16,3 +16,6 @@ package-lock.json
 
 # Spec document
 specifications.txt
+
+#incomplete static data set for when API was down
+data/
