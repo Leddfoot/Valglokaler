@@ -7,7 +7,31 @@
     <title>Valg Lokalene</title>
 </head>
 <body>
-    <h1>Valg Lokalene</h1>
+            <header class="header">
+                <div class="container">
+                    <h1 class="header__title">Valg Lokalene</h1>
+                    <h2 class="header__subtitle">Finn valglokaler i nærheten. Velg en fylke</h2>
+                </div>
+            
+            </header>
+            <div class="actions">
+                <div class="actions__container">
+                    <select id="fylke-list" class="dropdown">
+                        <option>--Velg Fylke</option>
+                    </select>
+                    <select id="kommune-list" class="dropdown">
+                        <option>--Velg Kommune</option>
+                    </select>
+                </div>
+            </div>
+                        <div class="status-message">
+                            <div id= "message" class="message__container">
+                            </div>
+                        </div>
+            <div class="container">
+                <div id="results"></div>
+                <p>Results here</p>
+            </div>
     <script src="/scripts/bundle.js"></script>
 </body>
 </html>

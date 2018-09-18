@@ -13,3 +13,6 @@ public/scripts/
 
 # Package-Lock
 package-lock.json
+
+# Spec document
+specifications.txt
