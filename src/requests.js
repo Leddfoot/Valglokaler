@@ -19,16 +19,16 @@ const getFylke = async () => {
 //   fetch(url)
 
 //   if (response.status === 200) {
-//       console.log(url);      
-//     const data = await response.json()    
+//       console.log(url);
+//     const data = await response.json()
 //     console.log(data);
 //     if (data.entries.length === 0) {
-//         // console.log('no stations');        
+//         // console.log('no stations');
 //     } else {
 //         generateKommuneList()
 //         return data.entries
 //     }
-    
+
 //   } else {
 //     throw new Error('datahotellet API utilgjengelig')
 //   }

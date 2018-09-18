@@ -1,4 +1,4 @@
-import { getKommuner } from "./requests.js";
+import { getKommuner } from './requests.js'
 // Generate fylke list for dropdown
 const generateOptionList = (fylkeName, fylkeNumber) => {
   if (fylkeName === 'Kontinentalsokkelen' || fylkeName === 'Uoppgitt') {
@@ -12,7 +12,7 @@ const generateOptionList = (fylkeName, fylkeNumber) => {
   const fylkeDropdown = document.getElementById('fylke-list')
   fylkeDropdown.appendChild(fylkeOptionElement)
 
-  console.log(`your county is ${fylkeName}. The county number is ${fylkeNumber}`);
+  console.log(`your county is ${fylkeName}. The county number is ${fylkeNumber}`)
 }
 
 // const generateKommuneList = (fylkeNumber) => {
@@ -22,7 +22,7 @@ const generateOptionList = (fylkeName, fylkeNumber) => {
 //         })
 //     }).catch((err) => {
 //         console.log(`Error: ${err}`)
-//     }) 
+//     })
 // }
 
 export { generateOptionList, generateKommuneList }
