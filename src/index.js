@@ -4,9 +4,7 @@ import { getDataset, makeKommuneUrl } from './requests.js'
 let url = `http://hotell.difi.no/api/json/difi/geo/fylke`
 
 getDataset(url).then((fylke) => {
-    fylke.forEach(element => {
-        // console.log(element.nummer);
-        
+    fylke.forEach(element => {        
         generateFylkeOptionList(element.navn, element.nummer)
     })
 }).catch((err) => {
@@ -15,22 +13,32 @@ getDataset(url).then((fylke) => {
 
 const clearKommuneOptions = () => {
     const kommuneOptions = document.getElementById('kommune-list')
-    kommuneOptions.options.length = 0
+    kommuneOptions.options.length = 1
 }
 
 document.querySelector('#fylke-list').addEventListener('change', (e) => {
-    // console.log(e.target.value)
-    const fylkeNumber = e.target.value
     clearKommuneOptions()
-    makeKommuneUrl(fylkeNumber) 
+    makeKommuneUrl(e.target.value) 
 })
 
 
 document.querySelector('#kommune-list').addEventListener('change', (e) => {
-     console.log(e.target.value)
-     const kommuneNumber = e.target.value
-     //YOU ARE HERE!!!
-     //BEWARE OF THIS[{"name":"Fylkesnummer","shortName":"fylke","groupable":true,"searchable":false,"indexPrimaryKey":false,"description":"...","definition":"fylkenr"},{"name":"Kommunenummer","shortName":"kommune","groupable":true,"searchable":false,"indexPrimaryKey":false,"description":"...","definition":"kommunenr"},{"name":"Kommunenavn","shortName":"navn","groupable":false,"searchable":true,"indexPrimaryKey":false,"description":"...","definition":"navn"}]
-     //for example https://hotell.difi.no/api/json/difi/geo/kommune?municipality_name=V%C3%A5ler
-    //
+    const url = `https://hotell.difi.no/api/json/valg/valglokaler/2017?municipality_id=${e.target.value}` 
+    const url1 = `https://hotell.difi.no/api/json/valg/valglokaler/2017?municipality_id=220`
+    console.log(url);
+    console.log(url1);
+    //Problem. First digit zero added to municipality id only for 3 digit numbers, ?municipality_id=0220 doesnt work must be id=220
+    //if(id is 3 digits && first digit is 0) {
+    //trim the first digit
+    // }
+    
+     
+    const pollingPlaces = getDataset(url).then((pollingPlace) => {
+        pollingPlace.forEach(element => {
+            console.log(`Polling place: ${element.area} at this address ${element.address_line}`);
+              
+        })
+    }).catch((err) => {
+        console.log(`Error: ${err}`)
+    })
 })

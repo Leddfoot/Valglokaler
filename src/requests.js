@@ -8,13 +8,11 @@ const getDataset = async (url) => {
         const data = await response.json()
         return data.entries
     } else {
-        throw new Error('datahotellet API utilgjengelig')
+        throw new Error('datahotellet API utilgjengelig ?? or just err ??')
     }
 }
 
 const makeKommuneUrl = (fylkeNumber) => {
-    // console.log(fylkeNumber);
-    //This don't work find out why
     if (fylkeNumber === '21' || fylkeNumber === '22') {
         // #todo create a status message
         console.log('no kommuner or voting locations in these fylker. show status message in #message');

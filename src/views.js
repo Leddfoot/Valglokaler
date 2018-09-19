@@ -16,7 +16,7 @@ const generateFylkeOptionList = (fylkeName, fylkeNumber) => {
 
 
 const generateKommuneOptionList = (kommune, kommuneCode) => {
-  // console.log(`this is what you are looking for ${kommuneCode}`);
+  // console.log(`this is what you are looking for ${kommuneCode}`);aka municipality_id
   
   const kommuneDropdown = document.getElementById('kommune-list')  
   const kommuneOptionElement = document.createElement('option')  
