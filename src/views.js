@@ -15,12 +15,13 @@ const generateFylkeOptionList = (fylkeName, fylkeNumber) => {
 
 
 
-const generateKommuneOptionList = (kommune) => {
+const generateKommuneOptionList = (kommune, kommuneCode) => {
+  // console.log(`this is what you are looking for ${kommuneCode}`);
+  
   const kommuneDropdown = document.getElementById('kommune-list')  
   const kommuneOptionElement = document.createElement('option')  
   kommuneOptionElement.textContent = kommune
-  //Do I need a value below?
-  kommuneOptionElement.value = kommune  
+  kommuneOptionElement.value = kommuneCode  
   kommuneDropdown.appendChild(kommuneOptionElement)  
 }
 
