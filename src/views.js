@@ -32,10 +32,20 @@ const sortPollingPlacesList = (url) => {
   })
 }
 
+const generatePollingPlacesDom = (element) => {
+  const resultsContainer = document.getElementById('results')
+  console.log('generating');
+  // resultsContainer.appendChild(element)
+}
+
 const generatePollingPlacesList = (sortedPollingPlaces) => {
-  sortedPollingPlaces.forEach(element => {
-      console.log(`Polling place: ${element.area} at this address ${element.address_line}`)
-    
+    const resultsContainer = document.getElementById('results')
+    resultsContainer.innerHTML = ''
+    sortedPollingPlaces.forEach(element => {
+    const pollingPlaceElement = `<p>Sted: ${element.area} Adresse: ${element.address_line} Sted Navn: ${element.area}</p>`
+
+    console.log(`Polling place: ${element.area} at this address ${element.address_line}`)
+    generatePollingPlacesDom(pollingPlaceElement)
   }).catch((err) => {
     return
   })
