@@ -22,15 +22,19 @@ document.querySelector('#fylke-list').addEventListener('change', (e) => {
 })
 
 document.querySelector('#kommune-list').addEventListener('change', (e) => {
-  const url = `https://hotell.difi.no/api/json/valg/valglokaler/2017?municipality_id=${e.target.value}`
-  const url1 = `https://hotell.difi.no/api/json/valg/valglokaler/2017?municipality_id=220`
-  console.log(url)
-  console.log(url1)
-  //This is the point where I ran out of time!
-  // Problem. First digit zero added to municipality id only for 3 digit numbers, ?municipality_id=0220 doesnt work must be id=220
-  // if(id is 3 digits && first digit is 0) {
-  // trim the first digit
-  // }
+    const municipalityId = e.target.value
+    const checkingForZero = e.target.value.charAt(0)
+    let url
+    if (checkingForZero === '0') {
+        const trimmedId = municipalityId.substr(1)
+        url = `https://hotell.difi.no/api/json/valg/valglokaler/2017?municipality_id=${trimmedId}` 
+        console.log(url);
+         
+    } else {
+        url = `https://hotell.difi.no/api/json/valg/valglokaler/2017?municipality_id=${municipalityId}`
+        console.log(url);
+    }
+
 
   const pollingPlaces = getDataset(url).then((pollingPlace) => {
     pollingPlace.forEach(element => {

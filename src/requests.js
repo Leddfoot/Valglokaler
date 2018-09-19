@@ -12,6 +12,7 @@ const getDataset = async (url) => {
   }
 }
 
+//Did this while tired ... seems like a poor setup ...check!!
 const makeKommuneUrl = (fylkeNumber) => {
   if (fylkeNumber === '21' || fylkeNumber === '22') {
     // #todo create a status message
