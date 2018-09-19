@@ -1,4 +1,3 @@
-import { getKommuner } from './requests.js'
 // Generate fylke list for dropdown
 const generateFylkeOptionList = (fylkeName, fylkeNumber) => {
   if (fylkeName === 'Kontinentalsokkelen' || fylkeName === 'Uoppgitt') {
@@ -13,16 +12,13 @@ const generateFylkeOptionList = (fylkeName, fylkeNumber) => {
   fylkeDropdown.appendChild(fylkeOptionElement)
 }
 
-
-
 const generateKommuneOptionList = (kommune, kommuneCode) => {
-  // console.log(`this is what you are looking for ${kommuneCode}`);aka municipality_id
-  
-  const kommuneDropdown = document.getElementById('kommune-list')  
-  const kommuneOptionElement = document.createElement('option')  
+
+  const kommuneDropdown = document.getElementById('kommune-list')
+  const kommuneOptionElement = document.createElement('option')
   kommuneOptionElement.textContent = kommune
-  kommuneOptionElement.value = kommuneCode  
-  kommuneDropdown.appendChild(kommuneOptionElement)  
+  kommuneOptionElement.value = kommuneCode
+  kommuneDropdown.appendChild(kommuneOptionElement)
 }
 
 export { generateFylkeOptionList, generateKommuneOptionList }
