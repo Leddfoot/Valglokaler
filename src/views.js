@@ -34,18 +34,21 @@ const sortPollingPlacesList = (url) => {
 
 const generatePollingPlacesDom = (element) => {
   const resultsContainer = document.getElementById('results')
-  console.log('generating');
-  // resultsContainer.appendChild(element)
+  console.log(resultsContainer);
+  const listParagraph = document.createElement("p")
+  listParagraph.setAttribute('class', 'list-item');
+  listParagraph.textContent = element
+  resultsContainer.appendChild(listParagraph)
 }
 
 const generatePollingPlacesList = (sortedPollingPlaces) => {
     const resultsContainer = document.getElementById('results')
     resultsContainer.innerHTML = ''
     sortedPollingPlaces.forEach(element => {
-    const pollingPlaceElement = `<p>Sted: ${element.area} Adresse: ${element.address_line} Sted Navn: ${element.area}</p>`
+    const pollingPlaceElementText = `Sted: ${element.area} Adresse: ${element.address_line} Sted Navn: ${element.area}`
 
     console.log(`Polling place: ${element.area} at this address ${element.address_line}`)
-    generatePollingPlacesDom(pollingPlaceElement)
+      generatePollingPlacesDom(pollingPlaceElementText)
   }).catch((err) => {
     return
   })
