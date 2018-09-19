@@ -1,3 +1,5 @@
+var _ = require('underscore');
+import { getDataset } from './requests.js'
 // Generate fylke list for dropdown
 const generateFylkeOptionList = (fylkeName, fylkeNumber) => {
   if (fylkeName === 'Kontinentalsokkelen' || fylkeName === 'Uoppgitt') {
@@ -21,4 +23,22 @@ const generateKommuneOptionList = (kommune, kommuneCode) => {
   kommuneDropdown.appendChild(kommuneOptionElement)
 }
 
-export { generateFylkeOptionList, generateKommuneOptionList }
+const sortPollingPlacesList = (url) => {
+  const pollingPlaces = getDataset(url).then((pollingPlaces) => {
+    const sortedPollingPlaces = _.sortBy(pollingPlaces, 'area')
+    generatePollingPlacesList(sortedPollingPlaces)
+  }).catch((err) => {
+    return
+  })
+}
+
+const generatePollingPlacesList = (sortedPollingPlaces) => {
+  sortedPollingPlaces.forEach(element => {
+      console.log(`Polling place: ${element.area} at this address ${element.address_line}`)
+    
+  }).catch((err) => {
+    return
+  })
+}
+
+export { generateFylkeOptionList, generateKommuneOptionList, sortPollingPlacesList }
